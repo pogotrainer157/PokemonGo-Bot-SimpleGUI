@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lbItemsInventory = new System.Windows.Forms.Label();
             this.lbPokemonsInventory = new System.Windows.Forms.Label();
@@ -37,21 +36,23 @@
             this.lbName = new System.Windows.Forms.Label();
             this.dGrid = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.boxPokemonName = new System.Windows.Forms.TextBox();
             this.boxPokestopCount = new System.Windows.Forms.TextBox();
+            this.boxPokemonCaughtProb = new System.Windows.Forms.TextBox();
             this.boxPokestopInit = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.boxPokestopName = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.boxPokemonName = new System.Windows.Forms.TextBox();
-            this.boxPokemonCaughtProb = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.MainMap = new GMap.NET.WindowsForms.GMapControl();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.applicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.farmingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.startToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.displayConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showStatisticsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myPokemonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,8 +83,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.boxStatsExpHour = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.displayConsoleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.MainMap = new GMap.NET.WindowsForms.GMapControl();
             ((System.ComponentModel.ISupportInitialize)(this.dGrid)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -121,9 +120,9 @@
             this.lbExperience.Location = new System.Drawing.Point(80, 103);
             this.lbExperience.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbExperience.Name = "lbExperience";
-            this.lbExperience.Size = new System.Drawing.Size(130, 30);
+            this.lbExperience.Size = new System.Drawing.Size(113, 30);
             this.lbExperience.TabIndex = 2;
-            this.lbExperience.Text = "lbExperience";
+            this.lbExperience.Text = "Experience";
             // 
             // lbLevel
             // 
@@ -134,7 +133,7 @@
             this.lbLevel.Name = "lbLevel";
             this.lbLevel.Size = new System.Drawing.Size(60, 30);
             this.lbLevel.TabIndex = 1;
-            this.lbLevel.Text = "Lv 30";
+            this.lbLevel.Text = "Level";
             // 
             // lbName
             // 
@@ -143,9 +142,9 @@
             this.lbName.Location = new System.Drawing.Point(9, 56);
             this.lbName.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(265, 47);
+            this.lbName.Size = new System.Drawing.Size(388, 47);
             this.lbName.TabIndex = 0;
-            this.lbName.Text = "lbTrainerName";
+            this.lbName.Text = "PokemonTrainerName";
             // 
             // dGrid
             // 
@@ -153,14 +152,6 @@
             this.dGrid.AllowUserToDeleteRows = false;
             this.dGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dGrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.dGrid.Location = new System.Drawing.Point(340, 393);
             this.dGrid.Name = "dGrid";
             this.dGrid.ReadOnly = true;
@@ -187,6 +178,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Current Pokestop";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 165);
+            this.label11.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(109, 30);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Capture %";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -197,6 +198,15 @@
             this.label10.TabIndex = 9;
             this.label10.Text = "of";
             // 
+            // boxPokemonName
+            // 
+            this.boxPokemonName.Enabled = false;
+            this.boxPokemonName.Location = new System.Drawing.Point(136, 125);
+            this.boxPokemonName.Name = "boxPokemonName";
+            this.boxPokemonName.Size = new System.Drawing.Size(185, 35);
+            this.boxPokemonName.TabIndex = 11;
+            this.boxPokemonName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // boxPokestopCount
             // 
             this.boxPokestopCount.Enabled = false;
@@ -206,6 +216,15 @@
             this.boxPokestopCount.TabIndex = 8;
             this.boxPokestopCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // boxPokemonCaughtProb
+            // 
+            this.boxPokemonCaughtProb.Enabled = false;
+            this.boxPokemonCaughtProb.Location = new System.Drawing.Point(136, 167);
+            this.boxPokemonCaughtProb.Name = "boxPokemonCaughtProb";
+            this.boxPokemonCaughtProb.Size = new System.Drawing.Size(185, 35);
+            this.boxPokemonCaughtProb.TabIndex = 18;
+            this.boxPokemonCaughtProb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // boxPokestopInit
             // 
             this.boxPokestopInit.Enabled = false;
@@ -214,6 +233,16 @@
             this.boxPokestopInit.Size = new System.Drawing.Size(57, 35);
             this.boxPokestopInit.TabIndex = 3;
             this.boxPokestopInit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(6, 125);
+            this.label15.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(99, 30);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "Pokemon";
             // 
             // label7
             // 
@@ -245,43 +274,32 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Location";
             // 
-            // label11
+            // MainMap
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 165);
-            this.label11.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(109, 30);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "Capture %";
-            // 
-            // boxPokemonName
-            // 
-            this.boxPokemonName.Enabled = false;
-            this.boxPokemonName.Location = new System.Drawing.Point(136, 125);
-            this.boxPokemonName.Name = "boxPokemonName";
-            this.boxPokemonName.Size = new System.Drawing.Size(185, 35);
-            this.boxPokemonName.TabIndex = 11;
-            this.boxPokemonName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // boxPokemonCaughtProb
-            // 
-            this.boxPokemonCaughtProb.Enabled = false;
-            this.boxPokemonCaughtProb.Location = new System.Drawing.Point(136, 167);
-            this.boxPokemonCaughtProb.Name = "boxPokemonCaughtProb";
-            this.boxPokemonCaughtProb.Size = new System.Drawing.Size(185, 35);
-            this.boxPokemonCaughtProb.TabIndex = 18;
-            this.boxPokemonCaughtProb.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 125);
-            this.label15.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(99, 30);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "Pokemon";
+            this.MainMap.BackColor = System.Drawing.SystemColors.Control;
+            this.MainMap.Bearing = 0F;
+            this.MainMap.CanDragMap = true;
+            this.MainMap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainMap.EmptyTileColor = System.Drawing.Color.Navy;
+            this.MainMap.GrayScaleMode = false;
+            this.MainMap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.MainMap.LevelsKeepInMemmory = 5;
+            this.MainMap.Location = new System.Drawing.Point(3, 31);
+            this.MainMap.MarkersEnabled = true;
+            this.MainMap.MaxZoom = 2;
+            this.MainMap.MinZoom = 2;
+            this.MainMap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.MainMap.Name = "MainMap";
+            this.MainMap.NegativeMode = false;
+            this.MainMap.PolygonsEnabled = true;
+            this.MainMap.RetryLoadTile = 0;
+            this.MainMap.RoutesEnabled = true;
+            this.MainMap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.MainMap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.MainMap.ShowTileGridLines = false;
+            this.MainMap.Size = new System.Drawing.Size(340, 283);
+            this.MainMap.TabIndex = 0;
+            this.MainMap.Zoom = 0D;
             // 
             // mainMenuStrip
             // 
@@ -293,7 +311,7 @@
             this.aboutToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1041, 24);
+            this.mainMenuStrip.Size = new System.Drawing.Size(1044, 24);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -330,6 +348,13 @@
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            // 
+            // displayConsoleToolStripMenuItem
+            // 
+            this.displayConsoleToolStripMenuItem.Name = "displayConsoleToolStripMenuItem";
+            this.displayConsoleToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
+            this.displayConsoleToolStripMenuItem.Text = "Display Console";
+            this.displayConsoleToolStripMenuItem.Click += new System.EventHandler(this.displayConsoleToolStripMenuItem_Click);
             // 
             // showStatisticsToolStripMenuItem
             // 
@@ -391,27 +416,27 @@
             this.luckyEgg0ToolStripMenuItem,
             this.incence0ToolStripMenuItem});
             this.useItemsToolStripMenuItem.Name = "useItemsToolStripMenuItem";
-            this.useItemsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.useItemsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.useItemsToolStripMenuItem.Text = "Use Item(s)";
             // 
             // luckyEgg0ToolStripMenuItem
             // 
             this.luckyEgg0ToolStripMenuItem.Name = "luckyEgg0ToolStripMenuItem";
-            this.luckyEgg0ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.luckyEgg0ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.luckyEgg0ToolStripMenuItem.Text = "Lucky Egg";
             this.luckyEgg0ToolStripMenuItem.Click += new System.EventHandler(this.luckyEgg0ToolStripMenuItem_Click);
             // 
             // incence0ToolStripMenuItem
             // 
             this.incence0ToolStripMenuItem.Name = "incence0ToolStripMenuItem";
-            this.incence0ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.incence0ToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.incence0ToolStripMenuItem.Text = "Incence";
             this.incence0ToolStripMenuItem.Click += new System.EventHandler(this.incence0ToolStripMenuItem_Click);
             // 
             // recycleItemsToolStripMenuItem
             // 
             this.recycleItemsToolStripMenuItem.Name = "recycleItemsToolStripMenuItem";
-            this.recycleItemsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.recycleItemsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.recycleItemsToolStripMenuItem.Text = "Recycle Items";
             this.recycleItemsToolStripMenuItem.Click += new System.EventHandler(this.recycleItemsToolStripMenuItem_Click);
             // 
@@ -434,7 +459,7 @@
             this.expProgressBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.expProgressBar.Location = new System.Drawing.Point(0, 24);
             this.expProgressBar.Name = "expProgressBar";
-            this.expProgressBar.Size = new System.Drawing.Size(1041, 26);
+            this.expProgressBar.Size = new System.Drawing.Size(1044, 26);
             this.expProgressBar.TabIndex = 10;
             // 
             // boxPokemonCount
@@ -619,44 +644,11 @@
             this.label8.TabIndex = 13;
             this.label8.Text = "Pokemon/Hour";
             // 
-            // displayConsoleToolStripMenuItem
-            // 
-            this.displayConsoleToolStripMenuItem.Name = "displayConsoleToolStripMenuItem";
-            this.displayConsoleToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
-            this.displayConsoleToolStripMenuItem.Text = "Display Console";
-            this.displayConsoleToolStripMenuItem.Click += new System.EventHandler(this.displayConsoleToolStripMenuItem_Click);
-            // 
-            // MainMap
-            // 
-            this.MainMap.Bearing = 0F;
-            this.MainMap.CanDragMap = true;
-            this.MainMap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainMap.EmptyTileColor = System.Drawing.Color.Navy;
-            this.MainMap.GrayScaleMode = false;
-            this.MainMap.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
-            this.MainMap.LevelsKeepInMemmory = 5;
-            this.MainMap.Location = new System.Drawing.Point(3, 31);
-            this.MainMap.MarkersEnabled = true;
-            this.MainMap.MaxZoom = 2;
-            this.MainMap.MinZoom = 2;
-            this.MainMap.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            this.MainMap.Name = "MainMap";
-            this.MainMap.NegativeMode = false;
-            this.MainMap.PolygonsEnabled = true;
-            this.MainMap.RetryLoadTile = 0;
-            this.MainMap.RoutesEnabled = true;
-            this.MainMap.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
-            this.MainMap.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
-            this.MainMap.ShowTileGridLines = false;
-            this.MainMap.Size = new System.Drawing.Size(340, 283);
-            this.MainMap.TabIndex = 0;
-            this.MainMap.Zoom = 0D;
-            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1041, 615);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(1044, 621);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbName);
@@ -673,7 +665,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PoGo Bot - SimpleGUI v1.0";
+            this.Text = "PoGo Bot - SimpleGUI v1.1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dGrid)).EndInit();
             this.groupBox2.ResumeLayout(false);

@@ -17,8 +17,8 @@ namespace PokemonGo.RocketAPI.Login
     {
         private const string OauthTokenEndpoint = "https://www.googleapis.com/oauth2/v4/token";
         private const string OauthEndpoint = "https://accounts.google.com/o/oauth2/device/code";
-        private const string ClientId = "115123608539-82psc02vs6v061njjivchf557lnimg2t.apps.googleusercontent.com";
-        private const string ClientSecret = "aTaio72-_s3PRyO5FdyU3tIJ";
+        private const string ClientId = "848232511240-7so421jotr2609rmqakceuu1luuq0ptb.apps.googleusercontent.com";
+        private const string ClientSecret = "NCjF1TLi2CcY6t5mt0ZveuL7";
 
         /// <summary>
         ///     Gets the access token from Google

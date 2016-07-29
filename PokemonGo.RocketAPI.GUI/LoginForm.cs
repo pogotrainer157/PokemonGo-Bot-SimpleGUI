@@ -23,16 +23,18 @@ namespace PokemonGo.RocketAPI.GUI
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+            // Set the First Method
+            comboLoginMethod.SelectedIndex = 0;
         }
 
-        private void btnPtcLogin_Click(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(boxUsername.Text))
             {
                 if (!string.IsNullOrWhiteSpace(boxPassword.Text))
                 {
                     loginSelected = true;
-                    auth = AuthType.Ptc;
+                    auth = (AuthType) Enum.Parse(typeof(AuthType), comboLoginMethod.SelectedItem.ToString());
                     this.Hide();
                 }
                 else
@@ -46,25 +48,10 @@ namespace PokemonGo.RocketAPI.GUI
             }
         }
 
-        private void btnGoogleLogin_Click(object sender, EventArgs e)
-        {
-            loginSelected = true;
-            auth = AuthType.Google;
-            this.Hide();
-        }
-
         private void boxPassword_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                btnPtcLogin_Click(null, null);
-        }
-
-        private void btnResetToken_Click(object sender, EventArgs e)
-        {
-            UserSettings.Default.GoogleRefreshToken = string.Empty;
-            UserSettings.Default.Save();
-
-            btnGoogleLogin_Click(null, null);
+                btnLogin_Click(null, null);
         }
     }
 }

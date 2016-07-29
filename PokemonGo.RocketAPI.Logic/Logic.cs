@@ -214,7 +214,7 @@ namespace PokemonGo.RocketAPI.Logic
                     if (_clientSettings.AuthType == AuthType.Ptc)
                         await _client.DoPtcLogin(_clientSettings.PtcUsername, _clientSettings.PtcPassword);
                     else if (_clientSettings.AuthType == AuthType.Google)
-                        await _client.DoGoogleLogin();
+                        _client.DoGoogleLogin("", "");
 
                     await _client.SetServer();
 

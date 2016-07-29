@@ -49,6 +49,7 @@ namespace PokemonGo.RocketAPI.GUI
             comboLocations.Items.Add(new Loc() { name = "Hamburg, Germany", lat = 53.5588061, lng = 10.057689399999958  });
             comboLocations.Items.Add(new Loc() { name = "Dusseldorf, Germany", lat = 51.224382, lng = 6.778896   });
             comboLocations.Items.Add(new Loc() { name = "Tokyo, Japan", lat = 35.69051125265253, lng = 139.68954205513 });
+            comboLocations.Items.Add(new Loc() { name = "Disneyland Park", lat = 33.8120962, lng = -117.9189742 });
         }        
 
         private void LocationSelector_Load(object sender, EventArgs e)
@@ -100,20 +101,27 @@ namespace PokemonGo.RocketAPI.GUI
 
         private void btnSetLocation_Click(object sender, EventArgs e)
         {
-            // Persist the Position
-            lat = MainMap.Position.Lat;
-            lng = MainMap.Position.Lng;
+            try
+            {
+                // Persist the Position
+                lat = double.Parse(boxLat.Text);
+                lng = double.Parse(boxLng.Text);
 
-            // User Settings
-            UserSettings.Default.DefaultLatitude = lat;
-            UserSettings.Default.DefaultLongitude = lng;
-            UserSettings.Default.Save();
+                // User Settings
+                UserSettings.Default.DefaultLatitude = lat;
+                UserSettings.Default.DefaultLongitude = lng;
+                UserSettings.Default.Save();
 
-            // Confirm Position Selection
-            setPos = true;
+                // Confirm Position Selection
+                setPos = true;
 
-            // Close this Window
-            this.Hide();
+                // Close this Window
+                this.Hide();
+            }
+            catch
+            {
+                MessageBox.Show("Invalid Data on Lat/Lng", "PoGo Bot");
+            }
         }
 
         private void comboLocations_SelectedIndexChanged(object sender, EventArgs e)

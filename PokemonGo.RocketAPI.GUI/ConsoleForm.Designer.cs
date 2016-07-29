@@ -37,14 +37,14 @@
             this.boxConsole.Location = new System.Drawing.Point(0, 0);
             this.boxConsole.Multiline = true;
             this.boxConsole.Name = "boxConsole";
-            this.boxConsole.Size = new System.Drawing.Size(641, 261);
+            this.boxConsole.Size = new System.Drawing.Size(1044, 61);
             this.boxConsole.TabIndex = 0;
             // 
             // ConsoleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 261);
+            this.ClientSize = new System.Drawing.Size(1044, 61);
             this.Controls.Add(this.boxConsole);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
